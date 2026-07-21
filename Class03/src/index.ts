@@ -1,9 +1,9 @@
-// console.log("Hola pocho")
+console.log("Hola desde Ts!")
 
-// let nombre = "Yo"
-// let edad = 21
-// let esEstudiante = true
-// console.log(nombre, edad, esEstudiante)
+let nombre = "Yona"
+let miEdad = 21
+let esEstudiante = true
+console.log(nombre, miEdad, esEstudiante)
 
 //Condicional if
 let nota: number = 6.2
