@@ -6,14 +6,14 @@ Implementación de un sistema de coordinación basado en eventos utilizando Even
 
 Clonar el repositorio:
 ```bash
-git clone [URL del repositorio]
+git clone https://github.com/YonaZakkart/event-oriented-programming.git
 ```
 
 O descargar el ZIP desde GitHub (botón "Code" → "Download ZIP") y descomprimir en una carpeta local.
 
 ## Instalación
 
-Dentro de la carpeta del proyecto:
+Dentro de la carpeta del proyecto (Class05):
 ```bash
 npm install
 ```
