@@ -33,7 +33,7 @@ npx tsx patrullaje.ts
 
 ## Descripción de los archivos
 
-### script.ts (ejemplo del tutor)
+### script.ts
 **Conceptos clave:** EventEmitter, herencia (extends), emit(), on(), interface, tipos unión.
 **Descripción:** implementa una central de policía (`CentralPoliciaNY`) que hereda de EventEmitter. Al reportar un incidente mediante `reportarIncidente()`, emite el evento `crimenEnProceso` con los datos tipados según la interfaz `AlertaCrimen`. Dos oyentes independientes (`SpiderMan` y `PeriodicoDailyBugle`) se suscriben al mismo evento y reaccionan cada uno con su propia lógica, sin que la central tenga conocimiento de su existencia.
 
