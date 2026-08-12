@@ -1,0 +1,16 @@
+#Dependencias
+node_modules/
+
+#Variasbles de entorno
+.env
+
+#Codigo generado
+dist/
+build/
+out/
+
+#typeScript
+*.tsbuildinfo
+
+# Logs
+*.log

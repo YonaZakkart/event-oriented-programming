@@ -1,14 +1,12 @@
+"use strict";
 //buscar elementos o componentes de html
-
-const boton = document.getElementById("btnAgregar") as HTMLButtonElement;
-const cajaTexto = document.getElementById("txtNombre") as HTMLInputElement;
-const etiqueta = document.getElementById("lblEstado") as HTMLHeadingElement;
-const lista = document.getElementById("lista") as HTMLUListElement;
-
+const boton = document.getElementById("btnAgregar");
+const cajaTexto = document.getElementById("txtNombre");
+const etiqueta = document.getElementById("lblEstado");
+const lista = document.getElementById("lista");
 //Registro de los eventos
 boton.addEventListener("click", AgregarNombre);
-
-function AgregarNombre(): void {
+function AgregarNombre() {
     //Verificar si hay un nombre
     if (cajaTexto.value.trim() === "") {
         alert("Debe de escribir un Nombre");
@@ -16,19 +14,14 @@ function AgregarNombre(): void {
     }
     //cambiar estado de etiqueta
     etiqueta.textContent = "ultimo registro: " + cajaTexto.value; //el valor, lo que esta o se agrego en la caja de texto
-
     //crear nuevo elemento para la lista
-    const elemento = document.createElement("li")
-
+    const elemento = document.createElement("li");
     //agregar texto a los elementos
     elemento.textContent = cajaTexto.value;
-
     //insertar elementos a la lista
-    lista.appendChild(elemento)
-
+    lista.appendChild(elemento);
     //limpiar el texto
     cajaTexto.value = "";
-
     //colocar el cursor nuevamente en la caja de texto
     cajaTexto.focus();
 }
