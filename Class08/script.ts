@@ -292,7 +292,8 @@ function limpiarCampos(): void {
 // Se ejecuta una sola vez, cuando la página termina de cargar.
 
 function init(): void {
-    console.log('Iniciando sistema de reclutamiento Spider-Verse...');
+    const ahora = new Date().toLocaleString();
+    console.log(`Iniciando sistema de reclutamiento Spider-Verse... [${ahora}]`);
 
     // Clic en "Reclutar"
     DOM.btnAgregar.addEventListener('click', agregarHeroe);

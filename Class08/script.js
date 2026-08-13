@@ -220,7 +220,8 @@ function limpiarCampos() {
 // conectando cada botón/input con la función que le corresponde.
 // Se ejecuta una sola vez, cuando la página termina de cargar.
 function init() {
-    console.log('Iniciando sistema de reclutamiento Spider-Verse...');
+    const ahora = new Date().toLocaleString();
+    console.log(`Iniciando sistema de reclutamiento Spider-Verse... [${ahora}]`);
     // Clic en "Reclutar"
     DOM.btnAgregar.addEventListener('click', agregarHeroe);
     // Clic en "Limpiar"
