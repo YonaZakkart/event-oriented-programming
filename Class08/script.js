@@ -192,6 +192,17 @@ function agregarHeroe() {
         }, 2000);
         return;
     }
+    // Validación: Nombre duplicado
+    const existeDuplicado = heroes.some(heroe => heroe.nombre.toLowerCase() === nombre.toLowerCase());
+    if (existeDuplicado) {
+        actualizarEstado(`El héroe "${nombre}" ya está registrado`);
+        DOM.txtNombre.focus();
+        DOM.txtNombre.style.borderColor = 'var(--spider-red)';
+        setTimeout(() => {
+            DOM.txtNombre.style.borderColor = '';
+        }, 2000);
+        return;
+    }
     // Creamos el objeto héroe siguiendo la interfaz definida en el Paso 1
     const nuevoHeroe = {
         id: idCounter++, // usamos el contador y LUEGO lo incrementamos
