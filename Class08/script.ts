@@ -141,6 +141,9 @@ function toggleEmptyState(): void {
 // vuelve a llamar CADA VEZ que el arreglo heroes cambia.
 
 function renderizarHeroes(): void {
+    // Muestra el estado del arreglo heroes en consola cada vez que se ejecuta esta función
+    console.log('Estado actual del arreglo heroes:', heroes);
+
     // Caso 1: no hay héroes, dejamos el contenedor vacío
     if (heroes.length === 0) {
         DOM.listaHeroes.innerHTML = '';
