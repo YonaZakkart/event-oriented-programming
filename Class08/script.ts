@@ -255,6 +255,17 @@ function agregarHeroe(): void {
         return;
     }
 
+    //Validacion de limite de caracteres
+    if (nombre.length > 20) {
+        actualizarEstado(`¡Error! El nombre no debe superar los 20 caracteres (actual: ${nombre.length})`);
+        DOM.txtNombre.focus();
+        DOM.txtNombre.style.borderColor = 'var(--spider-red)';
+        setTimeout(() => {
+            DOM.txtNombre.style.borderColor = '';
+        }, 2000);
+        return;
+    }
+
     // Validación: Nombre duplicado
     const existeDuplicado = heroes.some(
         heroe => heroe.nombre.toLowerCase() === nombre.toLowerCase()
