@@ -35,7 +35,9 @@ const DOM = {
     // Texto del footer que muestra el último universo reclutado
     dimensionFooter: document.getElementById('dimensionFooter'),
     //seleccionar filtro
-    selectFiltro: document.getElementById('selectFiltro')
+    selectFiltro: document.getElementById('selectFiltro'),
+    //ordenar A-Z
+    btnOrdenar: document.getElementById('btnOrdenar'),
 };
 // ================================================================
 // PASO 3: ESTADO GLOBAL DE LA APLICACIÓN
@@ -281,6 +283,11 @@ function limpiarCampos() {
     DOM.txtNombre.focus();
     actualizarEstado('Campos limpiados. Listo para nuevo recluta');
 }
+function ordenarHeroes() {
+    heroes.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    renderizarHeroes();
+    actualizarEstado('Héroes ordenados alfabéticamente');
+}
 // ================================================================
 // PASO 12: INICIALIZACIÓN — CONECTAR TODOS LOS EVENTOS
 // ================================================================
@@ -296,6 +303,8 @@ function init() {
     DOM.btnAgregar.addEventListener('click', agregarHeroe);
     // Clic en "Limpiar"
     DOM.btnLimpiar.addEventListener('click', limpiarCampos);
+    // Clic en "Ordenar A-Z"
+    DOM.btnOrdenar.addEventListener('click', ordenarHeroes);
     // Permitir reclutar presionando la tecla Enter dentro del input
     DOM.txtNombre.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {

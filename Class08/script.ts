@@ -61,7 +61,10 @@ const DOM = {
     dimensionFooter: document.getElementById('dimensionFooter') as HTMLElement,
 
     //seleccionar filtro
-    selectFiltro: document.getElementById('selectFiltro') as HTMLSelectElement
+    selectFiltro: document.getElementById('selectFiltro') as HTMLSelectElement,
+
+    //ordenar A-Z
+    btnOrdenar: document.getElementById('btnOrdenar') as HTMLButtonElement,
 };
 
 
@@ -361,6 +364,11 @@ function limpiarCampos(): void {
     actualizarEstado('Campos limpiados. Listo para nuevo recluta');
 }
 
+function ordenarHeroes(): void {
+    heroes.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    renderizarHeroes();
+    actualizarEstado('Héroes ordenados alfabéticamente');
+}
 
 // ================================================================
 // PASO 12: INICIALIZACIÓN — CONECTAR TODOS LOS EVENTOS
@@ -381,6 +389,9 @@ function init(): void {
 
     // Clic en "Limpiar"
     DOM.btnLimpiar.addEventListener('click', limpiarCampos);
+
+    // Clic en "Ordenar A-Z"
+    DOM.btnOrdenar.addEventListener('click', ordenarHeroes);
 
     // Permitir reclutar presionando la tecla Enter dentro del input
     DOM.txtNombre.addEventListener('keydown', (event: KeyboardEvent) => {
