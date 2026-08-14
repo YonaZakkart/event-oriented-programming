@@ -715,3 +715,28 @@ body::before {
     outline: 2px solid var(--spider-red);
     outline-offset: 2px;
 }
+
+/* Borde dorado para tarjetas favoritas */
+.hero-card.favorito {
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.btn-favorito {
+    padding: 6px 12px;
+    background: rgba(255, 215, 0, 0.15);
+    color: #FFD700;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-favorito:hover {
+    background: #FFD700;
+    color: #000;
+}

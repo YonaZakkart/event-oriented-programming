@@ -220,6 +220,15 @@ function setupEliminarHeroes(): void {
                 eliminarHeroe(id);
             }
         }
+
+        // Detección del botón Favorito
+        const btnFavorito = target.closest('.btn-favorito');
+        if (btnFavorito) {
+            const id = parseInt(btnFavorito.getAttribute('data-id') || '0');
+            if (id > 0) {
+                toggleFavorito(id);
+            }
+        }
     });
 }
 
