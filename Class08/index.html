@@ -63,6 +63,17 @@
             <section class="estudiantes glass-panel">
                 <h2>Equipo Spider-Man: Brand New Day</h2>
                 <p class="subtitle">Héroes que forman parte del nuevo comienzo</p>
+                <!-- Filtro de héroes -->
+                <div class="campo filtro-container" style="margin-bottom: 16px;">
+                    <label for="selectFiltro">Filtrar por:</label>
+                    <select id="selectFiltro">
+                        <option value="todos">Todos</option>
+                        <option value="favoritos">Solo favoritos</option>
+                        <option value="Tierra-616 (Peter Parker)">Tierra-616</option>
+                        <option value="Tierra-1610 (Miles Morales)">Tierra-1610</option>
+                        <option value="Tierra-65 (Gwen Stacy)">Tierra-65</option>
+                    </select>
+                </div>
                 <div class="hero-grid" id="listaEstudiantes">
                     <!-- Los elementos se agregarán dinámicamente aquí -->
                 </div>
