@@ -185,6 +185,13 @@ function eliminarHeroe(id) {
         actualizarEstado(`${heroeEliminado.nombre} ha sido expulsado del Spider-Verse`);
     }
 }
+function toggleFavorito(id) {
+    const heroe = heroes.find(h => h.id === id);
+    if (heroe) {
+        heroe.esFavorito = !heroe.esFavorito;
+        renderizarHeroes();
+    }
+}
 // ================================================================
 // PASO 10: AGREGAR UN NUEVO HÉROE
 // ================================================================

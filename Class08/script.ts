@@ -243,6 +243,14 @@ function eliminarHeroe(id: number): void {
     }
 }
 
+function toggleFavorito(id: number): void {
+    const heroe = heroes.find(h => h.id === id);
+    if (heroe) {
+        heroe.esFavorito = !heroe.esFavorito;
+        renderizarHeroes();
+    }
+}
+
 
 // ================================================================
 // PASO 10: AGREGAR UN NUEVO HÉROE
