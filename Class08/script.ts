@@ -21,6 +21,7 @@ interface Heroe {
     id: number;          // Identificador único del héroe
     nombre: string;      // Alias o nombre del héroe
     universo: string;    // Tierra de origen (ej: "Tierra-1610")
+    esFavorito: boolean; // nueva propiedad
 }
 
 
