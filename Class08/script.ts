@@ -58,7 +58,10 @@ const DOM = {
     emptyState: document.getElementById('emptyState') as HTMLElement,
 
     // Texto del footer que muestra el último universo reclutado
-    dimensionFooter: document.getElementById('dimensionFooter') as HTMLElement
+    dimensionFooter: document.getElementById('dimensionFooter') as HTMLElement,
+
+    //seleccionar filtro
+    selectFiltro: document.getElementById('selectFiltro') as HTMLSelectElement
 };
 
 
@@ -145,6 +148,16 @@ function renderizarHeroes(): void {
     // Muestra el estado del arreglo heroes en consola cada vez que se ejecuta esta función
     console.log('Estado actual del arreglo heroes:', heroes);
 
+    // Filtrado de héroes según el valor seleccionado
+    const filtro = DOM.selectFiltro ? DOM.selectFiltro.value : 'todos';
+    let heroesFiltrados = heroes;
+
+    if (filtro === 'favoritos') {
+        heroesFiltrados = heroes.filter(h => h.esFavorito);
+    } else if (filtro !== 'todos') {
+        heroesFiltrados = heroes.filter(h => h.universo === filtro);
+    }
+
     // Caso 1: no hay héroes, dejamos el contenedor vacío
     if (heroes.length === 0) {
         DOM.listaHeroes.innerHTML = '';
@@ -153,7 +166,6 @@ function renderizarHeroes(): void {
         actualizarEstado();
         return;
     }
-
     // Caso 2: hay héroes, ocultamos el mensaje de "vacío"
     toggleEmptyState();
 
@@ -161,24 +173,24 @@ function renderizarHeroes(): void {
     // string de HTML. Luego .join('') une todos esos strings en uno solo.
     // El atributo data-id guarda el id del héroe dentro del propio HTML,
     // para poder identificarlo después al hacer clic en "Expulsar".
-    DOM.listaHeroes.innerHTML = heroes.map(heroe => `
-    <div class="hero-card ${heroe.esFavorito ? 'favorito' : ''}" data-id="${heroe.id}">
-        <div class="hero-info">
-            <span class="hero-name">${heroe.nombre}</span>
-            <span class="hero-universe">
-                Origen: <span class="dimension-badge">${heroe.universo}</span>
-            </span>
+    DOM.listaHeroes.innerHTML = heroesFiltrados.map(heroe => `
+        <div class="hero-card ${heroe.esFavorito ? 'favorito' : ''}" data-id="${heroe.id}">
+            <div class="hero-info">
+                <span class="hero-name">${heroe.nombre}</span>
+                <span class="hero-universe">
+                    Origen: <span class="dimension-badge">${heroe.universo}</span>
+                </span>
+            </div>
+            <div class="hero-actions">
+                <button class="btn-favorito" data-id="${heroe.id}">
+                    ${heroe.esFavorito ? '★ Quitar de favoritos' : '☆ Marcar como favorito'}
+                </button>
+                <button class="btn-eliminar" data-id="${heroe.id}">
+                    Expulsar
+                </button>
+            </div>
         </div>
-        <div class="hero-actions">
-            <button class="btn-favorito" data-id="${heroe.id}">
-                ${heroe.esFavorito ? '★ Quitar de favoritos' : '☆ Marcar como favorito'}
-            </button>
-            <button class="btn-eliminar" data-id="${heroe.id}">
-                Expulsar
-            </button>
-        </div>
-    </div>
-`).join('');
+    `).join('');
 
     actualizarContador();
     actualizarEstado();
@@ -360,6 +372,9 @@ function limpiarCampos(): void {
 function init(): void {
     const ahora = new Date().toLocaleString();
     console.log(`Iniciando sistema de reclutamiento Spider-Verse... [${ahora}]`);
+
+    // Escuchador de evento "change" para el filtro
+    DOM.selectFiltro.addEventListener('change', renderizarHeroes);
 
     // Clic en "Reclutar"
     DOM.btnAgregar.addEventListener('click', agregarHeroe);
