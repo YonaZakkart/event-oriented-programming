@@ -177,6 +177,14 @@ function renderizarHeroes(): void {
     actualizarContador();
     actualizarEstado();
 
+    // Límite de 6 héroes: deshabilita o habilita el botón según el total
+    if (heroes.length >= 6) {
+        DOM.btnAgregar.disabled = true;
+        actualizarEstado('Limite de equipo alcanzado (maximo 6 héroes)');
+    } else {
+        DOM.btnAgregar.disabled = false;
+    }
+
     // IMPORTANTE: los botones "Expulsar" que acabamos de crear con
     // innerHTML NO tienen todavía ningún addEventListener propio.
     // Por eso usamos DELEGACIÓN DE EVENTOS (ver setupEliminarHeroes).
@@ -277,6 +285,12 @@ function agregarHeroe(): void {
         setTimeout(() => {
             DOM.txtNombre.style.borderColor = '';
         }, 2000);
+        return;
+    }
+
+    // Validación 4: Límite de héroes por si se intenta enviar con la tecla Enter
+    if (heroes.length >= 6) {
+        actualizarEstado('No se pueden agregar más héroes. Límite alcanzado [6]');
         return;
     }
 
