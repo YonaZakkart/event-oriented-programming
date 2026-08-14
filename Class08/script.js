@@ -158,6 +158,8 @@ function renderizarHeroes() {
     else {
         DOM.btnAgregar.disabled = false;
     }
+    // Guarda el estado actualizado en localStorage cada vez que se renderiza
+    guardarEnStorage();
     // IMPORTANTE: los botones "Expulsar" que acabamos de crear con
     // innerHTML NO tienen todavía ningún addEventListener propio.
     // Por eso usamos DELEGACIÓN DE EVENTOS (ver setupEliminarHeroes).
@@ -294,7 +296,26 @@ function ordenarHeroes() {
 // Explicar: esta función es la que "arma" toda la aplicación,
 // conectando cada botón/input con la función que le corresponde.
 // Se ejecuta una sola vez, cuando la página termina de cargar.
+// Guardar el arreglo y el contador en el almacenamiento local del navegador
+function guardarEnStorage() {
+    localStorage.setItem('spider_heroes', JSON.stringify(heroes));
+    localStorage.setItem('spider_idCounter', idCounter.toString());
+}
+// Cargar los datos almacenados al abrir o recargar la aplicación
+function cargarDesdeStorage() {
+    const heroesGuardados = localStorage.getItem('spider_heroes');
+    const counterGuardado = localStorage.getItem('spider_idCounter');
+    if (heroesGuardados) {
+        heroes = JSON.parse(heroesGuardados);
+    }
+    if (counterGuardado) {
+        idCounter = parseInt(counterGuardado, 10);
+    }
+}
 function init() {
+    // Carga los héroes guardados previamente en el navegador
+    cargarDesdeStorage();
+    renderizarHeroes();
     const ahora = new Date().toLocaleString();
     console.log(`Iniciando sistema de reclutamiento Spider-Verse... [${ahora}]`);
     // Escuchador de evento "change" para el filtro
