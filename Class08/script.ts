@@ -162,18 +162,23 @@ function renderizarHeroes(): void {
     // El atributo data-id guarda el id del héroe dentro del propio HTML,
     // para poder identificarlo después al hacer clic en "Expulsar".
     DOM.listaHeroes.innerHTML = heroes.map(heroe => `
-        <div class="hero-card" data-id="${heroe.id}">
-            <div class="hero-info">
-                <span class="hero-name">${heroe.nombre}</span>
-                <span class="hero-universe">
-                    Origen: <span class="dimension-badge">${heroe.universo}</span>
-                </span>
-            </div>
+    <div class="hero-card ${heroe.esFavorito ? 'favorito' : ''}" data-id="${heroe.id}">
+        <div class="hero-info">
+            <span class="hero-name">${heroe.nombre}</span>
+            <span class="hero-universe">
+                Origen: <span class="dimension-badge">${heroe.universo}</span>
+            </span>
+        </div>
+        <div class="hero-actions">
+            <button class="btn-favorito" data-id="${heroe.id}">
+                ${heroe.esFavorito ? '★ Quitar de favoritos' : '☆ Marcar como favorito'}
+            </button>
             <button class="btn-eliminar" data-id="${heroe.id}">
                 Expulsar
             </button>
         </div>
-    `).join('');
+    </div>
+`).join('');
 
     actualizarContador();
     actualizarEstado();
