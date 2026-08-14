@@ -230,7 +230,8 @@ function agregarHeroe() {
     const nuevoHeroe = {
         id: idCounter++, // usamos el contador y LUEGO lo incrementamos
         nombre: nombre,
-        universo: universo
+        universo: universo,
+        esFavorito: false // inicializado por defecto en false
     };
     heroes.push(nuevoHeroe);
     DOM.txtNombre.value = '';
