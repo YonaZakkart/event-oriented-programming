@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Central UNIVO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Biblioteca Central UNIVO</h1>
+    </header>
+
+    <div class="grid">
+        <section>
+            <h2>Agregar Nuevo Libro</h2>
+            <form id="form-libro">
+                <div class="form-group">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" required>
+                </div>
+                <div class="form-group">
+                    <label for="autor">Autor</label>
+                    <input type="text" id="autor" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" required>
+                        <option value="CIENCIA">CIENCIA</option>
+                        <option value="LITERATURA">LITERATURA</option>
+                        <option value="HISTORIA">HISTORIA</option>
+                        <option value="TECNOLOGIA">TECNOLOGIA</option>
+                        <option value="ARTE">ARTE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="anio">Anio</label>
+                    <input type="number" id="anio" required>
+                </div>
+                <div class="form-group">
+                    <label for="ejemplares">Ejemplares</label>
+                    <input type="number" id="ejemplares" min="1" required>
+                </div>
+                <button type="submit" class="btn-gold">Agregar a Catalogo</button>
+            </form>
+        </section>
+        <section>
+            <div id="mensaje-area"></div>
+
+            <div class="counters">
+                <span id="contador-libros">Total: 0 | Disponibles: 0</span>
+            </div>
+
+            <div class="controls">
+                <select id="filtro-categoria">
+                    <option value="TODAS">Todas las Categorías</option>
+                    <option value="CIENCIA">CIENCIA</option>
+                    <option value="LITERATURA">LITERATURA</option>
+                    <option value="HISTORIA">HISTORIA</option>
+                    <option value="TECNOLOGIA">TECNOLOGIA</option>
+                    <option value="ARTE">ARTE</option>
+                </select>
+                <button id="btn-orden-titulo">Ordenar por Título</button>
+                <button id="btn-orden-autor">Ordenar por Autor</button>
+                <button id="btn-solo-disponibles">Solo Disponibles</button>
+            </div>
+
+            <div id="contenedor-libros" class="catalog"></div>
+        </section>
+    </div>
+
+    <script type="module" src="../dist/script.js"></script>
+</body>
+
+</html>
